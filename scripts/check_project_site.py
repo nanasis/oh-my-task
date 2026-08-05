@@ -18,6 +18,8 @@ architecture_source = architecture.read_text(encoding="utf-8")
 required = [
     "Oh My Task",
     "/skill:oh-my-task create a new task",
+    "npx --yes github:The-JiahaoJiang/oh-my-task",
+    "--path /path/to/skills/oh-my-task",
     "The Pi extension stays invisible",
     "checkpointMode",
     "startupPrompt",

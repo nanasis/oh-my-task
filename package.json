@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "bin": {
+    "oh-my-task": "./scripts/install-skills.mjs"
+  },
   "keywords": ["pi-package", "agent-skill", "task-management"],
   "pi": {
     "extensions": ["./packages/pi-extension/src/index.ts"],

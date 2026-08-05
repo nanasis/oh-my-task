@@ -202,7 +202,11 @@ Revision 8 · 3 files · 1 decision
     <section id="use" class="reveal">
       <div class="section-head"><div class="eyebrow">Install and use</div><h2>A skill-first workflow.</h2><p>The extension works quietly in the background. Every explicit task operation uses the same skill interface across agents.</p></div>
       <div class="steps">
-        <article class="step"><div><h3>Install the Pi package</h3><p>Install from Git, then restart Pi or run <code>/reload</code>.</p><div class="code-block">pi install git:github.com/The-JiahaoJiang/oh-my-task<button class="copy">Copy</button></div></div></article>
+        <article class="step"><div><h3>Install for your coding agent</h3><p>Pi installs the full package. Other coding agents can install the shared skill and bundled runtime with one <code>npx</code> command.</p><div class="code-block"># Pi
+pi install git:github.com/The-JiahaoJiang/oh-my-task
+
+# Shared Agent Skills location
+npx --yes github:The-JiahaoJiang/oh-my-task<button class="copy">Copy</button></div><p style="margin-top:10px;color:var(--muted)">If your agent documents another skill directory, append <code>--path /path/to/skills/oh-my-task</code>.</p></div></article>
         <article class="step"><div><h3>Create or import a task</h3><p>Use natural instructions. Pi’s startup menu can prefill the same skill command and supports <code>@</code> plan-file completion.</p><div class="code-block">/skill:oh-my-task create a new task
 /skill:oh-my-task import a task plan from @docs/PLAN.md<button class="copy">Copy</button></div></div></article>
         <article class="step"><div><h3>Resume and checkpoint</h3><p>The skill resolves the current workspace and task, then handles internal revisions and persistence for you.</p><div class="code-block">/skill:oh-my-task resume my current task

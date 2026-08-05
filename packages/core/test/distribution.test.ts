@@ -65,5 +65,7 @@ test("root Pi package manifest references existing extension and skill", async (
     pi: { extensions: string[]; skills: string[] };
   };
   assert.ok(manifest.keywords.includes("pi-package"));
-  for (const path of [...manifest.pi.extensions, ...manifest.pi.skills]) await access(resolve(root, path));
+  const installManifest = manifest as typeof manifest & { bin: Record<string, string> };
+  assert.equal(installManifest.bin["oh-my-task"], "./scripts/install-skills.mjs");
+  for (const path of [...manifest.pi.extensions, ...manifest.pi.skills, installManifest.bin["oh-my-task"]!]) await access(resolve(root, path));
 });
