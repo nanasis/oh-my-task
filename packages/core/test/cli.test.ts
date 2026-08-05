@@ -58,6 +58,33 @@ test("CLI imports a plan by copying normalized items", async () => {
   } finally { await cleanup(); }
 });
 
+test("internal cross-agent tools discover tasks and return resume context", async () => {
+  const { root, io, output, cleanup } = await fixture();
+  try {
+    await runCli(["new", "--title", "Portable task", "--project", "app", "--json"], io);
+    const created = JSON.parse(output.at(-1)!) as { metadata: { id: string; revision: number } };
+    await runCli([
+      "associate", created.metadata.id, "--base-revision", "0", "--agent", "pi", "--session", "pi-session", "--cwd", root,
+    ], io);
+    output.length = 0;
+    assert.equal(await runCli(["workspace-tasks", "--json"], io), 0);
+    const discovery = JSON.parse(output[0]!) as { projectName: string; tasks: Array<{ id: string }> };
+    assert.equal(discovery.projectName, "app");
+    assert.deepEqual(discovery.tasks.map((task) => task.id), [created.metadata.id]);
+
+    output.length = 0;
+    assert.equal(await runCli([
+      "resume-context", created.metadata.id, "--agent", "codex-cli", "--session", "codex-session", "--cwd", root, "--json",
+    ], io), 0);
+    const resume = JSON.parse(output[0]!) as { agentSwitch: boolean; context: string; task: { revision: number }; recentSessions: unknown[] };
+    assert.equal(resume.agentSwitch, true);
+    assert.match(resume.context, /Agent switch: pi → codex-cli/);
+    assert.match(resume.context, /Portable task/);
+    assert.equal(resume.task.revision, 2);
+    assert.equal(resume.recentSessions.length, 2);
+  } finally { await cleanup(); }
+});
+
 test("CLI returns stable usage and stale-revision codes", async () => {
   const { io, output, errors, cleanup } = await fixture();
   try {

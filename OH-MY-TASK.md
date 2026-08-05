@@ -272,6 +272,7 @@ All links point to the implementation on the `main` branch.
 | Configuration persistence | [`config-store.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/config-store.ts) |
 | Workspace-name suggestion/validation | [`project.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/project.ts) |
 | Workspace/project mapping store | [`project-links.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/project-links.ts) |
+| Cross-agent task discovery/resume bundles | [`resume-context.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/resume-context.ts) |
 | Task ID and slug generation | [`id.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/id.ts) |
 | Plan-file normalization/import | [`plan-import.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/plan-import.ts) |
 | Internal runtime command adapter | [`cli.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/cli.ts) |
@@ -298,6 +299,7 @@ The extension deliberately contains no `registerCommand("oh-my-task", ...)` call
 |---|---|
 | Cross-agent workflow and policy | [`skills/oh-my-task/SKILL.md`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/skills/oh-my-task/SKILL.md) |
 | Skill-relative runtime launcher | [`skills/oh-my-task/cli.mjs`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/skills/oh-my-task/cli.mjs) |
+| Cross-agent task list/context tool | [`skills/oh-my-task/tools/task-context.mjs`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/skills/oh-my-task/tools/task-context.mjs) |
 | Completion/design document template | [`skills/oh-my-task/assets/completion-doc-template.md`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/skills/oh-my-task/assets/completion-doc-template.md) |
 
 ### Distribution, documentation, and automation
@@ -325,6 +327,7 @@ The extension deliberately contains no `registerCommand("oh-my-task", ...)` call
 | Index/manual inbox/recovery | [`index-store.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/index-store.test.ts) |
 | Plan import | [`plan-import.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/plan-import.test.ts) |
 | Workspace/project links | [`project-links.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/project-links.test.ts) |
+| Cross-agent discovery/resume context | [`resume-context.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/resume-context.test.ts) |
 | Internal runtime adapter | [`cli.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/cli.test.ts) |
 | Package/skill/site contracts | [`distribution.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/distribution.test.ts) |
 | Pi startup/context behavior | [`manual-lifecycle.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/test/manual-lifecycle.test.ts) |

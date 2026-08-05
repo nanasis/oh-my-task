@@ -18,6 +18,9 @@ test("shared skill has valid Agent Skills frontmatter and portable CLI guidance"
   assert.match(source, /docs\/oh-my-task\/<task-id>-completion\.md/);
   assert.match(source, /complete final design/i);
   await access(resolve(root, "skills", "oh-my-task", "assets", "completion-doc-template.md"));
+  await access(resolve(root, "skills", "oh-my-task", "tools", "task-context.mjs"));
+  assert.match(source, /tools\/task-context\.mjs list/);
+  assert.match(source, /tools\/task-context\.mjs resume/);
 });
 
 test("recovery and migration guidance documents destructive-operation safeguards", async () => {

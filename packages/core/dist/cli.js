@@ -2,7 +2,7 @@
 import { readFile, rm } from "node:fs/promises";
 import { basename, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
-import { createDefaultConfig, getOhMyTaskPaths, IndexReconciliationRequiredError, IndexStore, loadConfig, saveConfig, suggestProjectName, importPlanFile, TaskStore, ValidationError, } from "./index.js";
+import { createDefaultConfig, getOhMyTaskPaths, IndexReconciliationRequiredError, IndexStore, loadConfig, saveConfig, suggestProjectName, importPlanFile, buildResumeContextBundle, discoverWorkspaceTasks, ProjectLinkStore, TaskStore, ValidationError, } from "./index.js";
 export async function runCli(argv, io = defaultIo()) {
     const [command = "help", ...rest] = argv;
     const { positional, flags } = parseArguments(rest);
@@ -25,6 +25,42 @@ export async function runCli(argv, io = defaultIo()) {
                 await tasks.initialize();
                 await saveConfig(paths, createDefaultConfig());
                 emit({ path: paths.config }, `Created configuration: ${paths.config}`);
+                return 0;
+            }
+            case "workspace-tasks": {
+                const documents = await tasks.list();
+                const links = new ProjectLinkStore(paths, lock);
+                const project = flagString(flags, "project");
+                const linkedProjectName = await links.get(io.cwd);
+                const discovery = discoverWorkspaceTasks(documents, io.cwd, {
+                    ...(project ? { projectName: project } : {}),
+                    ...(linkedProjectName ? { linkedProjectName } : {}),
+                    includeClosed: flagBoolean(flags, "include-closed"),
+                });
+                emit(discovery, discovery.tasks.length
+                    ? discovery.tasks.map((item) => `Task: ${item.title} · Status: ${item.status} · Progress: ${item.progressSummary} · ID: ${item.id}`).join("\n")
+                    : discovery.requiresProjectApproval ? `Project approval required. Suggested project: ${discovery.suggestedProjectName}` : "No matching tasks.");
+                return 0;
+            }
+            case "resume-context": {
+                const id = requiredPosition(positional, 0, "task ID");
+                let task = await tasks.read(id);
+                const previousAgent = task.metadata.latestSession?.agent;
+                const agent = flagString(flags, "agent");
+                const sessionId = flagString(flags, "session");
+                if (sessionId && !agent)
+                    throw usage("--agent is required when --session is provided");
+                if (agent && sessionId) {
+                    task = await tasks.associate(id, task.metadata.revision, {
+                        agent,
+                        sessionId,
+                        cwd: flagString(flags, "cwd") ?? io.cwd,
+                        updatedAt: new Date().toISOString(),
+                    });
+                    await rebuild();
+                }
+                const bundle = buildResumeContextBundle(task, agent, config.sessionDisplayLimit, previousAgent);
+                emit(bundle, bundle.context);
                 return 0;
             }
             case "list": {
@@ -197,7 +233,7 @@ function stripAtPrefix(value) { return value.startsWith("@") ? value.slice(1) : 
 function usage(message) { const error = new Error(`${message}\nRun oh-my-task-cli help for usage.`); error.code = "USAGE_ERROR"; return error; }
 function errorCode(error) { const code = error.code; return code === "USAGE_ERROR" ? 64 : code === "VALIDATION_ERROR" ? 65 : code === "TASK_NOT_FOUND" ? 66 : code === "LOCK_BUSY" ? 75 : code === "STALE_REVISION" ? 76 : 1; }
 function defaultIo() { return { out: console.log, error: console.error, cwd: process.cwd(), env: process.env }; }
-function helpText() { return `oh-my-task-cli commands:\n  config-init\n  list [--project NAME] [--status STATUS] [--json]\n  show TASK [--compact] [--json]\n  new --title TITLE [--project NAME] [--objective TEXT] [--plan FILE]\n  associate|switch TASK --base-revision N --agent NAME --session ID\n  checkpoint TASK --input FILE|--data JSON\n  complete TASK --base-revision N [--force --reason TEXT]\n  archive TASK --base-revision N\n  validate [TASK] [--json]\n  rebuild-index\n  import-inbox [--apply] [--project NAME]\n  unlock TASK|index --force`; }
+function helpText() { return `Internal Oh My Task runtime commands:\n  workspace-tasks [--project NAME] [--include-closed] [--json]\n  resume-context TASK [--agent NAME --session ID --cwd PATH] [--json]\n  config-init\n  list [--project NAME] [--status STATUS] [--json]\n  show TASK [--compact] [--json]\n  new --title TITLE [--project NAME] [--objective TEXT] [--plan FILE]\n  associate|switch TASK --base-revision N --agent NAME --session ID\n  checkpoint TASK --input FILE|--data JSON\n  complete TASK --base-revision N [--force --reason TEXT]\n  archive TASK --base-revision N\n  validate [TASK] [--json]\n  rebuild-index\n  import-inbox [--apply] [--project NAME]\n  unlock TASK|index --force`; }
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
     process.exitCode = await runCli(process.argv.slice(2));
 }

@@ -28,22 +28,35 @@ The commands in this skill are implementation instructions for the agent, not us
 - Do not mention the internal package or executable unless diagnosing an installation failure.
 - Do not guess the package installation root.
 
-## Discover or Resume
+## Discover or Resume Across Agents
+
+Use the bundled task-context tool first. It resolves saved workspace links, infers projects from prior session references, and returns structured JSON:
 
 ```bash
-node <skill-directory>/cli.mjs list --project "<approved-project-name>"
-node <skill-directory>/cli.mjs show <task-id> --compact
+node <skill-directory>/tools/task-context.mjs list
 ```
 
-Ask the user to approve the current folder name as the project name or provide another name. Explain filtering in plain language: other tasks are hidden because they are not related to the selected project.
+The result contains:
 
-To continue from context, read the full selected task only as needed:
+- `projectName` when the workspace is already linked or can be inferred uniquely
+- `requiresProjectApproval` and `suggestedProjectName` when user confirmation is needed
+- `projectCandidates` when prior tasks link the workspace to more than one project
+- resumable tasks with title, status, revision, progress, next action, and latest session
+
+Ask for project approval only when `requiresProjectApproval` is true. If a project is selected, rerun internally with `--project "<approved-project-name>"`. Explain filtering in plain language: other tasks are hidden because they are not related to the selected project.
+
+After the user selects a task, load a self-contained context bundle:
 
 ```bash
-node <skill-directory>/cli.mjs show <task-id>
+node <skill-directory>/tools/task-context.mjs resume <task-id> --agent "<current-agent>" [--session "<session-id>"] --cwd "$PWD"
 ```
 
-Focus on Objective, Constraints, Plan, Current State, and Next Action.
+- Omit `--session` when the harness does not expose a stable session ID; never invent one.
+- When supplied, the tool associates the new agent/session and updates the task before returning context.
+- The JSON result includes `context`, `recentSessions`, `agentSwitch`, task metadata, and source-plan provenance.
+- If `agentSwitch` is true, resume from `context`; never try to load another agent's native session.
+- Inject or follow the returned `context` as the working context. Focus on Objective, Constraints, Plan, Current State, Latest Checkpoint, and Resume Instruction.
+- Verify current repository state before modifying files or changing plan statuses.
 
 ## Create
 
