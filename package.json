@@ -2,6 +2,11 @@
   "name": "oh-my-task",
   "version": "0.0.0",
   "private": true,
+  "homepage": "https://nanasis.github.io/oh-my-task/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nanasis/oh-my-task.git"
+  },
   "type": "module",
   "bin": {
     "oh-my-task": "./scripts/install-skills.mjs"

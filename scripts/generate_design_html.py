@@ -3,6 +3,7 @@
 
 from pathlib import Path
 import html
+import json
 import markdown
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -10,6 +11,10 @@ SOURCE = ROOT / "OH-MY-TASK.md"
 OUTPUT = ROOT / "OH-MY-TASK.html"
 
 source = SOURCE.read_text(encoding="utf-8")
+manifest = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
+pages_url = str(manifest.get("homepage", "")).rstrip("/")
+if not pages_url:
+    raise SystemExit("package.json must define homepage")
 md = markdown.Markdown(
     extensions=["toc", "fenced_code", "tables", "sane_lists", "smarty"],
     extension_configs={"toc": {"permalink": "#", "toc_depth": "2-3"}},
@@ -26,6 +31,7 @@ page = r'''<!doctype html>
   <meta name="description" content="Oh My Task final design and implementation plan">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="alternate icon" href="favicon.svg">
+  <link rel="canonical" href="{{ARCHITECTURE_URL}}">
   <title>Oh My Task — Design Review</title>
   <style>
     :root {
@@ -317,6 +323,8 @@ page = r'''<!doctype html>
 </html>
 '''
 
-page = page.replace("{{TOC}}", toc).replace("{{ARTICLE}}", article)
+page = (page.replace("{{TOC}}", toc)
+            .replace("{{ARTICLE}}", article)
+            .replace("{{ARCHITECTURE_URL}}", html.escape(f"{pages_url}/OH-MY-TASK.html")))
 OUTPUT.write_text(page, encoding="utf-8")
 print(f"Generated {OUTPUT.relative_to(ROOT)} from {SOURCE.relative_to(ROOT)}")

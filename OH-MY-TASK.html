@@ -6,6 +6,7 @@
   <meta name="description" content="Oh My Task final design and implementation plan">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="alternate icon" href="favicon.svg">
+  <link rel="canonical" href="https://nanasis.github.io/oh-my-task/OH-MY-TASK.html">
   <title>Oh My Task — Design Review</title>
   <style>
     :root {
@@ -228,8 +229,8 @@
       <article id="design"><h1 id="oh-my-task-design-architecture-and-implementation">Oh My Task — Design, Architecture, and Implementation<a class="headerlink" href="#oh-my-task-design-architecture-and-implementation" title="Permanent link">#</a></h1>
 <p>Oh My Task provides durable, Markdown-first task continuity for coding agents. Plans, verified progress, decisions, blockers, relevant files, and next actions live outside chat transcripts so work can continue across sessions and agents.</p>
 <ul>
-<li><strong>Project site:</strong> https://the-jiahaojiang.github.io/oh-my-task/</li>
-<li><strong>Source:</strong> https://github.com/The-JiahaoJiang/oh-my-task</li>
+<li><strong>Project site:</strong> https://nanasis.github.io/oh-my-task/</li>
+<li><strong>Source:</strong> https://github.com/nanasis/oh-my-task</li>
 <li><strong>User interface:</strong> the shared <code>oh-my-task</code> skill</li>
 <li><strong>Pi automation:</strong> a background extension with no competing user command</li>
 <li><strong>Storage:</strong> user-wide Markdown under <code>~/.oh-my-task/</code></li>
@@ -497,87 +498,87 @@ nextAction: &quot;Verify rollback behavior.&quot;
 <tbody>
 <tr>
 <td>Public internal exports</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/index.ts"><code>packages/core/src/index.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/index.ts"><code>packages/core/src/index.ts</code></a></td>
 </tr>
 <tr>
 <td>Shared domain types</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/types.ts"><code>types.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/types.ts"><code>types.ts</code></a></td>
 </tr>
 <tr>
 <td>Validation errors and lifecycle errors</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/errors.ts"><code>errors.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/errors.ts"><code>errors.ts</code></a></td>
 </tr>
 <tr>
 <td>Task/config schema validation</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/schema.ts"><code>schema.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/schema.ts"><code>schema.ts</code></a></td>
 </tr>
 <tr>
 <td>Schema migration registry</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/migrations.ts"><code>migrations.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/migrations.ts"><code>migrations.ts</code></a></td>
 </tr>
 <tr>
 <td>Conservative frontmatter parser</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/yaml.ts"><code>yaml.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/yaml.ts"><code>yaml.ts</code></a></td>
 </tr>
 <tr>
 <td>Task Markdown parsing/serialization</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/markdown.ts"><code>markdown.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/markdown.ts"><code>markdown.ts</code></a></td>
 </tr>
 <tr>
 <td>Plan/current-state/checkpoint sections</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/task-body.ts"><code>task-body.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/task-body.ts"><code>task-body.ts</code></a></td>
 </tr>
 <tr>
 <td>Authoritative task lifecycle store</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/task-store.ts"><code>task-store.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/task-store.ts"><code>task-store.ts</code></a></td>
 </tr>
 <tr>
 <td>Generated global index/manual inbox</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/index-store.ts"><code>index-store.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/index-store.ts"><code>index-store.ts</code></a></td>
 </tr>
 <tr>
 <td>Atomic file replacement/recovery</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/atomic.ts"><code>atomic.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/atomic.ts"><code>atomic.ts</code></a></td>
 </tr>
 <tr>
 <td>Short-lived lock implementation</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/lock.ts"><code>lock.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/lock.ts"><code>lock.ts</code></a></td>
 </tr>
 <tr>
 <td>Storage path resolution</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/paths.ts"><code>paths.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/paths.ts"><code>paths.ts</code></a></td>
 </tr>
 <tr>
 <td>Configuration defaults</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/config.ts"><code>config.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/config.ts"><code>config.ts</code></a></td>
 </tr>
 <tr>
 <td>Configuration persistence</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/config-store.ts"><code>config-store.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/config-store.ts"><code>config-store.ts</code></a></td>
 </tr>
 <tr>
 <td>Workspace-name suggestion/validation</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/project.ts"><code>project.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/project.ts"><code>project.ts</code></a></td>
 </tr>
 <tr>
 <td>Workspace/project mapping store</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/project-links.ts"><code>project-links.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/project-links.ts"><code>project-links.ts</code></a></td>
 </tr>
 <tr>
 <td>Cross-agent task discovery/resume bundles</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/resume-context.ts"><code>resume-context.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/resume-context.ts"><code>resume-context.ts</code></a></td>
 </tr>
 <tr>
 <td>Task ID and slug generation</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/id.ts"><code>id.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/id.ts"><code>id.ts</code></a></td>
 </tr>
 <tr>
 <td>Plan-file normalization/import</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/plan-import.ts"><code>plan-import.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/plan-import.ts"><code>plan-import.ts</code></a></td>
 </tr>
 <tr>
 <td>Internal runtime command adapter</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/cli.ts"><code>cli.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/cli.ts"><code>cli.ts</code></a></td>
 </tr>
 </tbody>
 </table>
@@ -593,31 +594,31 @@ nextAction: &quot;Verify rollback behavior.&quot;
 <tbody>
 <tr>
 <td>Extension entry and lifecycle hooks</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/src/index.ts"><code>packages/pi-extension/src/index.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/src/index.ts"><code>packages/pi-extension/src/index.ts</code></a></td>
 </tr>
 <tr>
 <td>Runtime/store construction</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/src/runtime.ts"><code>runtime.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/src/runtime.ts"><code>runtime.ts</code></a></td>
 </tr>
 <tr>
 <td>Reload-safe workspace links</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/src/project-links.ts"><code>project-links.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/src/project-links.ts"><code>project-links.ts</code></a></td>
 </tr>
 <tr>
 <td>Compact task context/session metadata</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/src/context.ts"><code>context.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/src/context.ts"><code>context.ts</code></a></td>
 </tr>
 <tr>
 <td>Startup labels and skill-prefill helpers</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/src/ui.ts"><code>ui.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/src/ui.ts"><code>ui.ts</code></a></td>
 </tr>
 <tr>
 <td>Auto-checkpoint reentrancy controller</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/src/auto-checkpoint.ts"><code>auto-checkpoint.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/src/auto-checkpoint.ts"><code>auto-checkpoint.ts</code></a></td>
 </tr>
 <tr>
 <td>Pi session filtering/import proposals</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/src/session-import.ts"><code>session-import.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/src/session-import.ts"><code>session-import.ts</code></a></td>
 </tr>
 </tbody>
 </table>
@@ -633,19 +634,19 @@ nextAction: &quot;Verify rollback behavior.&quot;
 <tbody>
 <tr>
 <td>Cross-agent workflow and policy</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/skills/oh-my-task/SKILL.md"><code>skills/oh-my-task/SKILL.md</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/skills/oh-my-task/SKILL.md"><code>skills/oh-my-task/SKILL.md</code></a></td>
 </tr>
 <tr>
 <td>Skill-relative runtime launcher</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/skills/oh-my-task/cli.mjs"><code>skills/oh-my-task/cli.mjs</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/skills/oh-my-task/cli.mjs"><code>skills/oh-my-task/cli.mjs</code></a></td>
 </tr>
 <tr>
 <td>Cross-agent task list/context tool</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/skills/oh-my-task/tools/task-context.mjs"><code>skills/oh-my-task/tools/task-context.mjs</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/skills/oh-my-task/tools/task-context.mjs"><code>skills/oh-my-task/tools/task-context.mjs</code></a></td>
 </tr>
 <tr>
 <td>Completion/design document template</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/skills/oh-my-task/assets/completion-doc-template.md"><code>skills/oh-my-task/assets/completion-doc-template.md</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/skills/oh-my-task/assets/completion-doc-template.md"><code>skills/oh-my-task/assets/completion-doc-template.md</code></a></td>
 </tr>
 </tbody>
 </table>
@@ -660,39 +661,39 @@ nextAction: &quot;Verify rollback behavior.&quot;
 <tbody>
 <tr>
 <td>Package resource manifest</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/package.json"><code>package.json</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/package.json"><code>package.json</code></a></td>
 </tr>
 <tr>
 <td>Cross-agent skill installer</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/scripts/install-skills.mjs"><code>scripts/install-skills.mjs</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/scripts/install-skills.mjs"><code>scripts/install-skills.mjs</code></a></td>
 </tr>
 <tr>
 <td>Architecture HTML generator</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/scripts/generate_design_html.py"><code>scripts/generate_design_html.py</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/scripts/generate_design_html.py"><code>scripts/generate_design_html.py</code></a></td>
 </tr>
 <tr>
 <td>Project-site generator</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/scripts/generate_project_site.py"><code>scripts/generate_project_site.py</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/scripts/generate_project_site.py"><code>scripts/generate_project_site.py</code></a></td>
 </tr>
 <tr>
 <td>Project-site validator</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/scripts/check_project_site.py"><code>scripts/check_project_site.py</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/scripts/check_project_site.py"><code>scripts/check_project_site.py</code></a></td>
 </tr>
 <tr>
 <td>Node 24 dependency-free test runner</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/scripts/test-with-node-types.mjs"><code>scripts/test-with-node-types.mjs</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/scripts/test-with-node-types.mjs"><code>scripts/test-with-node-types.mjs</code></a></td>
 </tr>
 <tr>
 <td>Standard TypeScript test runner</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/scripts/run-ts-tests.mjs"><code>scripts/run-ts-tests.mjs</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/scripts/run-ts-tests.mjs"><code>scripts/run-ts-tests.mjs</code></a></td>
 </tr>
 <tr>
 <td>Cross-platform validation workflow</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/.github/workflows/ci.yml"><code>.github/workflows/ci.yml</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/.github/workflows/ci.yml"><code>.github/workflows/ci.yml</code></a></td>
 </tr>
 <tr>
 <td>GitHub Pages workflow</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/.github/workflows/pages.yml"><code>.github/workflows/pages.yml</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/.github/workflows/pages.yml"><code>.github/workflows/pages.yml</code></a></td>
 </tr>
 </tbody>
 </table>
@@ -707,59 +708,59 @@ nextAction: &quot;Verify rollback behavior.&quot;
 <tbody>
 <tr>
 <td>Schema, paths, IDs, and defaults</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/foundation.test.ts"><code>foundation.test.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/foundation.test.ts"><code>foundation.test.ts</code></a></td>
 </tr>
 <tr>
 <td>Markdown/frontmatter round trips</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/markdown.test.ts"><code>markdown.test.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/markdown.test.ts"><code>markdown.test.ts</code></a></td>
 </tr>
 <tr>
 <td>Locks, concurrency, atomic writes</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/io-safety.test.ts"><code>io-safety.test.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/io-safety.test.ts"><code>io-safety.test.ts</code></a></td>
 </tr>
 <tr>
 <td>Task lifecycle/checkpoints</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/task-store.test.ts"><code>task-store.test.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/task-store.test.ts"><code>task-store.test.ts</code></a></td>
 </tr>
 <tr>
 <td>Index/manual inbox/recovery</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/index-store.test.ts"><code>index-store.test.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/index-store.test.ts"><code>index-store.test.ts</code></a></td>
 </tr>
 <tr>
 <td>Plan import</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/plan-import.test.ts"><code>plan-import.test.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/plan-import.test.ts"><code>plan-import.test.ts</code></a></td>
 </tr>
 <tr>
 <td>Workspace/project links</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/project-links.test.ts"><code>project-links.test.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/project-links.test.ts"><code>project-links.test.ts</code></a></td>
 </tr>
 <tr>
 <td>Cross-agent discovery/resume context</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/resume-context.test.ts"><code>resume-context.test.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/resume-context.test.ts"><code>resume-context.test.ts</code></a></td>
 </tr>
 <tr>
 <td>Internal runtime adapter</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/cli.test.ts"><code>cli.test.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/cli.test.ts"><code>cli.test.ts</code></a></td>
 </tr>
 <tr>
 <td>Package/skill/site contracts</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/distribution.test.ts"><code>distribution.test.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/distribution.test.ts"><code>distribution.test.ts</code></a></td>
 </tr>
 <tr>
 <td>Pi startup/context behavior</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/test/manual-lifecycle.test.ts"><code>manual-lifecycle.test.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/test/manual-lifecycle.test.ts"><code>manual-lifecycle.test.ts</code></a></td>
 </tr>
 <tr>
 <td>Pi automatic checkpoints</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/test/auto-checkpoint.test.ts"><code>auto-checkpoint.test.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/test/auto-checkpoint.test.ts"><code>auto-checkpoint.test.ts</code></a></td>
 </tr>
 <tr>
 <td>Pi session import/privacy</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/test/session-import.test.ts"><code>session-import.test.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/test/session-import.test.ts"><code>session-import.test.ts</code></a></td>
 </tr>
 <tr>
 <td>Pi workspace-link inference</td>
-<td><a href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/test/project-linking.test.ts"><code>project-linking.test.ts</code></a></td>
+<td><a href="https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/test/project-linking.test.ts"><code>project-linking.test.ts</code></a></td>
 </tr>
 </tbody>
 </table>

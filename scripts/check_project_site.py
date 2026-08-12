@@ -18,7 +18,9 @@ architecture_source = architecture.read_text(encoding="utf-8")
 required = [
     "Oh My Task",
     "/skill:oh-my-task create a new task",
-    "npx --yes github:The-JiahaoJiang/oh-my-task",
+    "npx --yes github:nanasis/oh-my-task",
+    "https://github.com/nanasis/oh-my-task",
+    "https://nanasis.github.io/oh-my-task/",
     "--path /path/to/skills/oh-my-task",
     "The Pi extension stays invisible",
     "checkpointMode",
@@ -40,6 +42,9 @@ for value in required:
         raise SystemExit(f"Missing required site content: {value}")
 if "oh-my-task-cli" in source:
     raise SystemExit("Internal CLI name must not be exposed on the user-facing site")
+for legacy in ["The-JiahaoJiang", "the-jiahaojiang"]:
+    if legacy in source or legacy in architecture_source:
+        raise SystemExit(f"Legacy GitHub identity remains in generated site: {legacy}")
 for value in ["System Architecture", "Implementation Details and Code Map", "packages/core/src/task-store.ts", 'rel="icon" href="favicon.svg"']:
     if value not in architecture_source:
         raise SystemExit(f"Architecture page is missing required content: {value}")

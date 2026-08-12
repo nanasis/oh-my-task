@@ -12,8 +12,8 @@ if (args.includes("--help") || args.includes("-h")) {
   console.log(`Install the Oh My Task agent skill and its bundled runtime.
 
 Usage:
-  npx --yes github:The-JiahaoJiang/oh-my-task
-  npx --yes github:The-JiahaoJiang/oh-my-task --path <skill-directory>
+  npx --yes github:nanasis/oh-my-task
+  npx --yes github:nanasis/oh-my-task --path <skill-directory>
 
 Default:
   ~/.agents/skills/oh-my-task

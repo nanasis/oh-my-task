@@ -2,8 +2,8 @@
 
 Oh My Task provides durable, Markdown-first task continuity for coding agents. Plans, verified progress, decisions, blockers, relevant files, and next actions live outside chat transcripts so work can continue across sessions and agents.
 
-- **Project site:** https://the-jiahaojiang.github.io/oh-my-task/
-- **Source:** https://github.com/The-JiahaoJiang/oh-my-task
+- **Project site:** https://nanasis.github.io/oh-my-task/
+- **Source:** https://github.com/nanasis/oh-my-task
 - **User interface:** the shared `oh-my-task` skill
 - **Pi automation:** a background extension with no competing user command
 - **Storage:** user-wide Markdown under `~/.oh-my-task/`
@@ -255,27 +255,27 @@ All links point to the implementation on the `main` branch.
 
 | Module | Implementation |
 |---|---|
-| Public internal exports | [`packages/core/src/index.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/index.ts) |
-| Shared domain types | [`types.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/types.ts) |
-| Validation errors and lifecycle errors | [`errors.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/errors.ts) |
-| Task/config schema validation | [`schema.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/schema.ts) |
-| Schema migration registry | [`migrations.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/migrations.ts) |
-| Conservative frontmatter parser | [`yaml.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/yaml.ts) |
-| Task Markdown parsing/serialization | [`markdown.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/markdown.ts) |
-| Plan/current-state/checkpoint sections | [`task-body.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/task-body.ts) |
-| Authoritative task lifecycle store | [`task-store.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/task-store.ts) |
-| Generated global index/manual inbox | [`index-store.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/index-store.ts) |
-| Atomic file replacement/recovery | [`atomic.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/atomic.ts) |
-| Short-lived lock implementation | [`lock.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/lock.ts) |
-| Storage path resolution | [`paths.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/paths.ts) |
-| Configuration defaults | [`config.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/config.ts) |
-| Configuration persistence | [`config-store.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/config-store.ts) |
-| Workspace-name suggestion/validation | [`project.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/project.ts) |
-| Workspace/project mapping store | [`project-links.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/project-links.ts) |
-| Cross-agent task discovery/resume bundles | [`resume-context.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/resume-context.ts) |
-| Task ID and slug generation | [`id.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/id.ts) |
-| Plan-file normalization/import | [`plan-import.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/plan-import.ts) |
-| Internal runtime command adapter | [`cli.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/src/cli.ts) |
+| Public internal exports | [`packages/core/src/index.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/index.ts) |
+| Shared domain types | [`types.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/types.ts) |
+| Validation errors and lifecycle errors | [`errors.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/errors.ts) |
+| Task/config schema validation | [`schema.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/schema.ts) |
+| Schema migration registry | [`migrations.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/migrations.ts) |
+| Conservative frontmatter parser | [`yaml.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/yaml.ts) |
+| Task Markdown parsing/serialization | [`markdown.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/markdown.ts) |
+| Plan/current-state/checkpoint sections | [`task-body.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/task-body.ts) |
+| Authoritative task lifecycle store | [`task-store.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/task-store.ts) |
+| Generated global index/manual inbox | [`index-store.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/index-store.ts) |
+| Atomic file replacement/recovery | [`atomic.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/atomic.ts) |
+| Short-lived lock implementation | [`lock.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/lock.ts) |
+| Storage path resolution | [`paths.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/paths.ts) |
+| Configuration defaults | [`config.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/config.ts) |
+| Configuration persistence | [`config-store.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/config-store.ts) |
+| Workspace-name suggestion/validation | [`project.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/project.ts) |
+| Workspace/project mapping store | [`project-links.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/project-links.ts) |
+| Cross-agent task discovery/resume bundles | [`resume-context.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/resume-context.ts) |
+| Task ID and slug generation | [`id.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/id.ts) |
+| Plan-file normalization/import | [`plan-import.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/plan-import.ts) |
+| Internal runtime command adapter | [`cli.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/src/cli.ts) |
 
 The internal command adapter is called only by the skill or extension. It is not installed as a user-facing executable.
 
@@ -283,13 +283,13 @@ The internal command adapter is called only by the skill or extension. It is not
 
 | Module | Implementation |
 |---|---|
-| Extension entry and lifecycle hooks | [`packages/pi-extension/src/index.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/src/index.ts) |
-| Runtime/store construction | [`runtime.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/src/runtime.ts) |
-| Reload-safe workspace links | [`project-links.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/src/project-links.ts) |
-| Compact task context/session metadata | [`context.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/src/context.ts) |
-| Startup labels and skill-prefill helpers | [`ui.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/src/ui.ts) |
-| Auto-checkpoint reentrancy controller | [`auto-checkpoint.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/src/auto-checkpoint.ts) |
-| Pi session filtering/import proposals | [`session-import.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/src/session-import.ts) |
+| Extension entry and lifecycle hooks | [`packages/pi-extension/src/index.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/src/index.ts) |
+| Runtime/store construction | [`runtime.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/src/runtime.ts) |
+| Reload-safe workspace links | [`project-links.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/src/project-links.ts) |
+| Compact task context/session metadata | [`context.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/src/context.ts) |
+| Startup labels and skill-prefill helpers | [`ui.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/src/ui.ts) |
+| Auto-checkpoint reentrancy controller | [`auto-checkpoint.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/src/auto-checkpoint.ts) |
+| Pi session filtering/import proposals | [`session-import.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/src/session-import.ts) |
 
 The extension deliberately contains no `registerCommand("oh-my-task", ...)` call. It contributes background behavior and an internal model tool only in automatic mode.
 
@@ -297,43 +297,43 @@ The extension deliberately contains no `registerCommand("oh-my-task", ...)` call
 
 | Module | Implementation |
 |---|---|
-| Cross-agent workflow and policy | [`skills/oh-my-task/SKILL.md`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/skills/oh-my-task/SKILL.md) |
-| Skill-relative runtime launcher | [`skills/oh-my-task/cli.mjs`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/skills/oh-my-task/cli.mjs) |
-| Cross-agent task list/context tool | [`skills/oh-my-task/tools/task-context.mjs`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/skills/oh-my-task/tools/task-context.mjs) |
-| Completion/design document template | [`skills/oh-my-task/assets/completion-doc-template.md`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/skills/oh-my-task/assets/completion-doc-template.md) |
+| Cross-agent workflow and policy | [`skills/oh-my-task/SKILL.md`](https://github.com/nanasis/oh-my-task/blob/main/skills/oh-my-task/SKILL.md) |
+| Skill-relative runtime launcher | [`skills/oh-my-task/cli.mjs`](https://github.com/nanasis/oh-my-task/blob/main/skills/oh-my-task/cli.mjs) |
+| Cross-agent task list/context tool | [`skills/oh-my-task/tools/task-context.mjs`](https://github.com/nanasis/oh-my-task/blob/main/skills/oh-my-task/tools/task-context.mjs) |
+| Completion/design document template | [`skills/oh-my-task/assets/completion-doc-template.md`](https://github.com/nanasis/oh-my-task/blob/main/skills/oh-my-task/assets/completion-doc-template.md) |
 
 ### Distribution, documentation, and automation
 
 | Module | Implementation |
 |---|---|
-| Package resource manifest | [`package.json`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/package.json) |
-| Cross-agent skill installer | [`scripts/install-skills.mjs`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/scripts/install-skills.mjs) |
-| Architecture HTML generator | [`scripts/generate_design_html.py`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/scripts/generate_design_html.py) |
-| Project-site generator | [`scripts/generate_project_site.py`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/scripts/generate_project_site.py) |
-| Project-site validator | [`scripts/check_project_site.py`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/scripts/check_project_site.py) |
-| Node 24 dependency-free test runner | [`scripts/test-with-node-types.mjs`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/scripts/test-with-node-types.mjs) |
-| Standard TypeScript test runner | [`scripts/run-ts-tests.mjs`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/scripts/run-ts-tests.mjs) |
-| Cross-platform validation workflow | [`.github/workflows/ci.yml`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/.github/workflows/ci.yml) |
-| GitHub Pages workflow | [`.github/workflows/pages.yml`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/.github/workflows/pages.yml) |
+| Package resource manifest | [`package.json`](https://github.com/nanasis/oh-my-task/blob/main/package.json) |
+| Cross-agent skill installer | [`scripts/install-skills.mjs`](https://github.com/nanasis/oh-my-task/blob/main/scripts/install-skills.mjs) |
+| Architecture HTML generator | [`scripts/generate_design_html.py`](https://github.com/nanasis/oh-my-task/blob/main/scripts/generate_design_html.py) |
+| Project-site generator | [`scripts/generate_project_site.py`](https://github.com/nanasis/oh-my-task/blob/main/scripts/generate_project_site.py) |
+| Project-site validator | [`scripts/check_project_site.py`](https://github.com/nanasis/oh-my-task/blob/main/scripts/check_project_site.py) |
+| Node 24 dependency-free test runner | [`scripts/test-with-node-types.mjs`](https://github.com/nanasis/oh-my-task/blob/main/scripts/test-with-node-types.mjs) |
+| Standard TypeScript test runner | [`scripts/run-ts-tests.mjs`](https://github.com/nanasis/oh-my-task/blob/main/scripts/run-ts-tests.mjs) |
+| Cross-platform validation workflow | [`.github/workflows/ci.yml`](https://github.com/nanasis/oh-my-task/blob/main/.github/workflows/ci.yml) |
+| GitHub Pages workflow | [`.github/workflows/pages.yml`](https://github.com/nanasis/oh-my-task/blob/main/.github/workflows/pages.yml) |
 
 ### Test suites
 
 | Area | Tests |
 |---|---|
-| Schema, paths, IDs, and defaults | [`foundation.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/foundation.test.ts) |
-| Markdown/frontmatter round trips | [`markdown.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/markdown.test.ts) |
-| Locks, concurrency, atomic writes | [`io-safety.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/io-safety.test.ts) |
-| Task lifecycle/checkpoints | [`task-store.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/task-store.test.ts) |
-| Index/manual inbox/recovery | [`index-store.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/index-store.test.ts) |
-| Plan import | [`plan-import.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/plan-import.test.ts) |
-| Workspace/project links | [`project-links.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/project-links.test.ts) |
-| Cross-agent discovery/resume context | [`resume-context.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/resume-context.test.ts) |
-| Internal runtime adapter | [`cli.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/cli.test.ts) |
-| Package/skill/site contracts | [`distribution.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/core/test/distribution.test.ts) |
-| Pi startup/context behavior | [`manual-lifecycle.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/test/manual-lifecycle.test.ts) |
-| Pi automatic checkpoints | [`auto-checkpoint.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/test/auto-checkpoint.test.ts) |
-| Pi session import/privacy | [`session-import.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/test/session-import.test.ts) |
-| Pi workspace-link inference | [`project-linking.test.ts`](https://github.com/The-JiahaoJiang/oh-my-task/blob/main/packages/pi-extension/test/project-linking.test.ts) |
+| Schema, paths, IDs, and defaults | [`foundation.test.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/foundation.test.ts) |
+| Markdown/frontmatter round trips | [`markdown.test.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/markdown.test.ts) |
+| Locks, concurrency, atomic writes | [`io-safety.test.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/io-safety.test.ts) |
+| Task lifecycle/checkpoints | [`task-store.test.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/task-store.test.ts) |
+| Index/manual inbox/recovery | [`index-store.test.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/index-store.test.ts) |
+| Plan import | [`plan-import.test.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/plan-import.test.ts) |
+| Workspace/project links | [`project-links.test.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/project-links.test.ts) |
+| Cross-agent discovery/resume context | [`resume-context.test.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/resume-context.test.ts) |
+| Internal runtime adapter | [`cli.test.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/cli.test.ts) |
+| Package/skill/site contracts | [`distribution.test.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/core/test/distribution.test.ts) |
+| Pi startup/context behavior | [`manual-lifecycle.test.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/test/manual-lifecycle.test.ts) |
+| Pi automatic checkpoints | [`auto-checkpoint.test.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/test/auto-checkpoint.test.ts) |
+| Pi session import/privacy | [`session-import.test.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/test/session-import.test.ts) |
+| Pi workspace-link inference | [`project-linking.test.ts`](https://github.com/nanasis/oh-my-task/blob/main/packages/pi-extension/test/project-linking.test.ts) |
 
 ---
 

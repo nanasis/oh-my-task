@@ -18,6 +18,13 @@ output.mkdir(parents=True, exist_ok=True)
 
 manifest = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
 version = manifest.get("version", "development")
+repository_config = manifest.get("repository", {})
+repository_url = repository_config.get("url", "") if isinstance(repository_config, dict) else str(repository_config)
+repository_url = repository_url.removesuffix(".git")
+repository_slug = repository_url.removeprefix("https://github.com/")
+pages_url = manifest.get("homepage", "")
+if not repository_url or "/" not in repository_slug or not pages_url:
+    raise SystemExit("package.json must define canonical repository.url and homepage")
 revision = os.environ.get("GITHUB_SHA", "local")[:7]
 generated = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
@@ -30,9 +37,11 @@ page = r'''<!doctype html>
   <meta name="theme-color" content="#0a0d17">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="alternate icon" href="favicon.svg">
+  <link rel="canonical" href="{{PAGES_URL}}">
   <meta property="og:title" content="Oh My Task">
   <meta property="og:description" content="Plans survive sessions. Context survives agents.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="{{PAGES_URL}}">
   <title>Oh My Task — Durable task continuity for coding agents</title>
   <style>
     :root {
@@ -131,7 +140,7 @@ page = r'''<!doctype html>
   <nav class="nav"><div class="nav-inner">
     <a class="brand" href="#top"><span class="logo">✓</span><span>Oh My Task</span></a>
     <div class="nav-links"><a href="#terminal-tabs">Terminal tabs</a><a href="#why">Why</a><a href="#use">Use it</a><a href="#extension">Extension</a><a href="#config">Config</a></div>
-    <a class="button" href="https://github.com/The-JiahaoJiang/oh-my-task">GitHub ↗</a>
+    <a class="button" href="{{REPOSITORY_URL}}">GitHub ↗</a>
     <button id="theme" aria-label="Toggle theme">☼</button>
   </div></nav>
 
@@ -141,7 +150,7 @@ page = r'''<!doctype html>
         <div class="eyebrow">Markdown-first · agent-independent</div>
         <h1>Plans survive sessions.<br><span class="gradient">Context survives agents.</span></h1>
         <p class="lead">Oh My Task keeps implementation plans, verified progress, decisions, blockers, and next actions in durable task documents—so work can continue without dragging an entire conversation along.</p>
-        <div class="actions"><a class="button primary" href="#use">Get started</a><a class="button" href="OH-MY-TASK.html">Architecture reference</a><a class="button" href="https://github.com/The-JiahaoJiang/oh-my-task/blob/main/OH-MY-TASK.md">Markdown source</a></div>
+        <div class="actions"><a class="button primary" href="#use">Get started</a><a class="button" href="OH-MY-TASK.html">Architecture reference</a><a class="button" href="{{REPOSITORY_URL}}/blob/main/OH-MY-TASK.md">Markdown source</a></div>
       </div>
       <div class="terminal" aria-label="Example terminal workflow">
         <div class="terminal-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
@@ -203,10 +212,10 @@ Revision 8 · 3 files · 1 decision
       <div class="section-head"><div class="eyebrow">Install and use</div><h2>A skill-first workflow.</h2><p>The extension works quietly in the background. Every explicit task operation uses the same skill interface across agents.</p></div>
       <div class="steps">
         <article class="step"><div><h3>Install for your coding agent</h3><p>Pi installs the full package. Other coding agents can install the shared skill and bundled runtime with one <code>npx</code> command.</p><div class="code-block"># Pi
-pi install git:github.com/The-JiahaoJiang/oh-my-task
+pi install git:github.com/nanasis/oh-my-task
 
 # Shared Agent Skills location
-npx --yes github:The-JiahaoJiang/oh-my-task<button class="copy">Copy</button></div><p style="margin-top:10px;color:var(--muted)">If your agent documents another skill directory, append <code>--path /path/to/skills/oh-my-task</code>.</p></div></article>
+npx --yes github:{{REPOSITORY_SLUG}}<button class="copy">Copy</button></div><p style="margin-top:10px;color:var(--muted)">If your agent documents another skill directory, append <code>--path /path/to/skills/oh-my-task</code>.</p></div></article>
         <article class="step"><div><h3>Create or import a task</h3><p>Use natural instructions. Pi’s startup menu can prefill the same skill command and supports <code>@</code> plan-file completion.</p><div class="code-block">/skill:oh-my-task create a new task
 /skill:oh-my-task import a task plan from @docs/PLAN.md<button class="copy">Copy</button></div></div></article>
         <article class="step"><div><h3>Resume and checkpoint</h3><p>The skill resolves the current workspace and task, then handles internal revisions and persistence for you.</p><div class="code-block">/skill:oh-my-task resume my current task
@@ -270,7 +279,7 @@ npx --yes github:The-JiahaoJiang/oh-my-task<button class="copy">Copy</button></d
     </section>
   </main>
 
-  <footer><div class="footer-inner"><span>Oh My Task · version {{VERSION}} · revision {{REVISION}}</span><span>Generated {{GENERATED}} · <a href="https://github.com/The-JiahaoJiang/oh-my-task">Source on GitHub</a></span></div></footer>
+  <footer><div class="footer-inner"><span>Oh My Task · version {{VERSION}} · revision {{REVISION}}</span><span>Generated {{GENERATED}} · <a href="{{REPOSITORY_URL}}">Source on GitHub</a></span></div></footer>
 
   <script>
     const root=document.documentElement, key='oh-my-task-site-theme';
@@ -291,7 +300,10 @@ npx --yes github:The-JiahaoJiang/oh-my-task<button class="copy">Copy</button></d
 
 page = (page.replace("{{VERSION}}", html.escape(str(version)))
             .replace("{{REVISION}}", html.escape(revision))
-            .replace("{{GENERATED}}", html.escape(generated)))
+            .replace("{{GENERATED}}", html.escape(generated))
+            .replace("{{REPOSITORY_URL}}", html.escape(repository_url))
+            .replace("{{REPOSITORY_SLUG}}", html.escape(repository_slug))
+            .replace("{{PAGES_URL}}", html.escape(pages_url)))
 (output / "index.html").write_text(page, encoding="utf-8", newline="\n")
 architecture_source = ROOT / "OH-MY-TASK.html"
 if not architecture_source.exists():

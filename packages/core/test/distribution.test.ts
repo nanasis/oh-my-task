@@ -61,9 +61,13 @@ test("Pi hot reload does not require the core ProjectLinkStore export", async ()
 
 test("root Pi package manifest references existing extension and skill", async () => {
   const manifest = JSON.parse(await readFile(resolve(root, "package.json"), "utf8")) as {
+    homepage: string;
+    repository: { url: string };
     keywords: string[];
     pi: { extensions: string[]; skills: string[] };
   };
+  assert.equal(manifest.homepage, "https://nanasis.github.io/oh-my-task/");
+  assert.equal(manifest.repository.url, "https://github.com/nanasis/oh-my-task.git");
   assert.ok(manifest.keywords.includes("pi-package"));
   const installManifest = manifest as typeof manifest & { bin: Record<string, string> };
   assert.equal(installManifest.bin["oh-my-task"], "./scripts/install-skills.mjs");
